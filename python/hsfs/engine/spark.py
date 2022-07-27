@@ -419,8 +419,7 @@ class Engine:
                 to_df=to_df,
             )
         else:
-            split_dataset = self._split_df(query_obj, training_dataset,
-                                           write_options)
+            split_dataset = self._split_df(query_obj, training_dataset)
             transformation_function_engine.TransformationFunctionEngine.populate_builtin_transformation_functions(
                 training_dataset, feature_view_obj, split_dataset
             )
