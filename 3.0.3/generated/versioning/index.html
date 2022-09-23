@@ -1108,7 +1108,7 @@
 The <code>version</code> parameter is not mandatory. If not provided and no feature group (or training dataset) with that name exists, then the version is going to be set to 1. If the <code>version</code> parameter is not provided, and a feature group (or training dataset) already exist, then the version number will be increased by one.</p>
 <h3 id="appending-features-to-an-existing-version">Appending features to an existing version<a class="headerlink" href="#appending-features-to-an-existing-version" title="Permanent link">#</a></h3>
 <p>For feature groups, it is possible to append new features to existing feature groups. This is not considered a breaking change. To append new features users can either use the UI or the following <code>append_features</code> method:</p>
-<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/feature_group.py#L338">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/feature_group.py#L340">[source]</a></span></p>
 <h3 id="append_features">append_features<a class="headerlink" href="#append_features" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FeatureGroup</span><span class="o">.</span><span class="n">append_features</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 </code></pre></div>
@@ -1183,7 +1183,7 @@ Data versioning is also not critical for training datasets, which are point in t
 </p>
 
 <p>It is also possible to retrieve the same information programmatically, using the <code>commit_details()</code> method of a feature group object:</p>
-<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/feature_group.py#L1175">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/feature_group.py#L1183">[source]</a></span></p>
 <h3 id="commit_details">commit_details<a class="headerlink" href="#commit_details" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FeatureGroup</span><span class="o">.</span><span class="n">commit_details</span><span class="p">(</span><span class="n">wallclock_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
@@ -1192,7 +1192,9 @@ on time travel enabled feature groups</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li><strong>wallclock_time</strong> <code>Optional[str]</code>: Commit details as of specific point in time. Defaults to <code>None</code>.</li>
-<li><strong>limit</strong> <code>Optional[int]</code>: Number of commits to retrieve. Defaults to <code>None</code>.</li>
+<li><strong>limit</strong> <code>Optional[int]</code>: Number of commits to retrieve. Defaults to <code>None</code>. datatime.datetime, datetime.date, unix timestamp in seconds (int), or string.
+    The String should be formatted in one of the following formats <code>%Y%m%d</code>, <code>%Y%m%d%H</code>, <code>%Y%m%d%H%M</code>,
+    <code>%Y%m%d%H%M%S</code>, or <code>%Y%m%d%H%M%S%f</code>.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p><code>Dict[str, Dict[str, str]]</code>. Dictionary object of commit metadata timeline, where Key is commit id and value
@@ -1220,7 +1222,7 @@ when calling the <code>insert()</code> method.</p>
 or construct a training dataset.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>wallclock_time</strong>: Datetime string. The String should be formatted in one of the
+<li><strong>wallclock_time</strong>: datatime.datetime, datetime.date, unix timestamp in seconds (int), or string. The String should be formatted in one of the
     following formats <code>%Y%m%d</code>, <code>%Y%m%d%H</code>, <code>%Y%m%d%H%M</code>, or <code>%Y%m%d%H%M%S</code>.</li>
 </ul>
 <p><strong>Returns</strong></p>
