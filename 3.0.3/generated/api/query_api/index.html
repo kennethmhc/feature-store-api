@@ -1283,7 +1283,7 @@ or construct a training dataset.</p>
 <p><strong>Returns</strong></p>
 <p><code>Query</code>. The query object with the applied time travel condition.</p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L199">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L194">[source]</a></span></p>
 <h3 id="filter">filter<a class="headerlink" href="#filter" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">Query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </code></pre></div>
@@ -1308,12 +1308,12 @@ respective feature group:
 <p><strong>Returns</strong></p>
 <p><code>Query</code>. The query object with the applied filter.</p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L241">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L236">[source]</a></span></p>
 <h3 id="from_cache_feature_group_only">from_cache_feature_group_only<a class="headerlink" href="#from_cache_feature_group_only" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">Query</span><span class="o">.</span><span class="n">from_cache_feature_group_only</span><span class="p">()</span>
 </code></pre></div>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L263">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L258">[source]</a></span></p>
 <h3 id="from_response_json">from_response_json<a class="headerlink" href="#from_response_json" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">Query</span><span class="o">.</span><span class="n">from_response_json</span><span class="p">(</span><span class="n">json_dict</span><span class="p">)</span>
 </code></pre></div>
@@ -1347,11 +1347,6 @@ Joins of one level are supported, no neted joins.</p>
 <h3 id="pull_changes">pull_changes<a class="headerlink" href="#pull_changes" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">Query</span><span class="o">.</span><span class="n">pull_changes</span><span class="p">(</span><span class="n">wallclock_start_time</span><span class="p">,</span> <span class="n">wallclock_end_time</span><span class="p">)</span>
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Deprecated</p>
-</div>
-<p><code>pull_changes</code> method is deprecated. Use
-`as_of(end_wallclock_time, exclude_until=start_wallclock_time) instead.</p>
 <hr />
 <p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L78">[source]</a></span></p>
 <h3 id="read">read<a class="headerlink" href="#read" title="Permanent link">#</a></h3>
@@ -1381,16 +1376,16 @@ type of the output DataFrame (Spark, Pandas, Numpy, Python Lists).</p>
 <li><strong>online</strong> <code>Optional[bool]</code>: Show from online storage. Defaults to <code>False</code>.</li>
 </ul>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L309">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L304">[source]</a></span></p>
 <h3 id="to_string">to_string<a class="headerlink" href="#to_string" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">Query</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">online</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
-<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L325">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L320">[source]</a></span></p>
 <h3 id="left_feature_group_end_time">left_feature_group_end_time<a class="headerlink" href="#left_feature_group_end_time" title="Permanent link">#</a></h3>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L321">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/logicalclocks/feature-store-api/blob/master/python/hsfs/constructor/query.py#L316">[source]</a></span></p>
 <h3 id="left_feature_group_start_time">left_feature_group_start_time<a class="headerlink" href="#left_feature_group_start_time" title="Permanent link">#</a></h3>
 <hr />
 
