@@ -16,7 +16,7 @@ import warnings
 
 from hsfs import engine, client, util
 from hsfs import feature_group as fg
-from hsfs.client import exceptions
+from hsfs.client import exceptions, hopsworks
 from hsfs.client.exceptions import FeatureStoreException
 from hsfs.core import feature_group_base_engine, hudi_engine
 
@@ -231,13 +231,8 @@ class FeatureGroupEngine(feature_group_base_engine.FeatureGroupBaseEngine):
         return self._kafka_api.get_topic_subject(feature_group._online_topic_name)
 
     def get_kafka_config(self, online_write_options):
+
         config = {
-            "kafka.bootstrap.servers": ",".join(
-                [
-                    endpoint.replace("INTERNAL://", "")
-                    for endpoint in self._kafka_api.get_broker_endpoints()
-                ]
-            ),
             "kafka.security.protocol": "SSL",
             "kafka.ssl.truststore.location": client.get_instance()._get_jks_trust_store_path(),
             "kafka.ssl.truststore.password": client.get_instance()._cert_key,
@@ -246,6 +241,26 @@ class FeatureGroupEngine(feature_group_base_engine.FeatureGroupBaseEngine):
             "kafka.ssl.key.password": client.get_instance()._cert_key,
             "kafka.ssl.endpoint.identification.algorithm": "",
         }
+
+        if (isinstance(client.get_instance(), hopsworks.Client) or
+            online_write_options.get("internal_kafka", False)):
+            config["kafka.bootstrap.servers"] = ",".join(
+                [
+                    endpoint.replace("INTERNAL://", "")
+                    for endpoint in self._kafka_api.get_broker_endpoints(
+                        externalListeners=False
+                    )
+                ]
+            )
+        else:
+            config["kafka.bootstrap.servers"] = ",".join(
+                [
+                    endpoint.replace("EXTERNAL://", "")
+                    for endpoint in self._kafka_api.get_broker_endpoints(
+                        externalListeners=True
+                    )
+                ]
+            )
         return {**online_write_options, **config}
 
     def insert_stream(
